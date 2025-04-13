@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MCP Notion Documentation Tool Integration
+
+## Context
+- This rule is applied when specifically requested for tracking documentation in Notion
+- Enables documentation tracking in Notion after PLAN mode execution
+- Helps maintain consistent documentation across the memory bank and Notion
+
+## Critical Rules
+
+- When the user requests "sync documentation to Notion", IMMEDIATELY use the MCP Notion Tool
+- FIRST use the MCP Notion Tool to get the pageId of the "0. Inbox" page
+- THEN create a new page under the Inbox page with a descriptive title related to the current task
+- ALWAYS populate the new page with complete documentation generated during PLAN mode
+- Include ALL relevant context from the Memory Bank documentation in the Notion page
+- Structure the Notion documentation to match Memory Bank patterns
+- Use proper Notion formatting (headings, bullet points, code blocks) for readability
+- After successful documentation sync, confirm completion to the user with the page link
+
+## Examples
+
+<example>
+user: Let's sync our documentation to Notion after completing this task
+assistant: I'll sync our documentation to Notion.
+
+[MCP Notion Tool call to get "0. Inbox" pageId]
+[MCP Notion Tool call to create new page with documentation]
+
+Documentation has been successfully synced to Notion. You can access it at the provided link.
+</example>
+
+<example type="invalid">
+user: Let's sync our documentation to Notion
+assistant: I don't have the capability to interact with Notion directly. You would need to manually copy the documentation from our Memory Bank to your Notion workspace.
+</example> 
