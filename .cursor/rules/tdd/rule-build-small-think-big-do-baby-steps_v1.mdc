@@ -1,0 +1,96 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+tags: [quy-trình, chiến-lược, thực-thi, mcp]
+version: 1.0
+author: Solution Architect/CTO
+status: active
+
+# Quy tắc: Think Big, Do Baby Steps (Tư duy lớn, thực hiện từng bước nhỏ)
+
+## 1. Giới thiệu
+
+Đây là tài liệu hướng dẫn chi tiết cho phương châm số 1: **"Think Big, Do Baby Steps"** được đề cập trong file `guidelines.md`. Quy tắc này cung cấp một bộ khung (framework) để biến những ý tưởng lớn, tầm nhìn chiến lược thành những bước đi cụ thể, an toàn và có thể đo lường được.
+
+- **Mục tiêu**: Đảm bảo mọi thành viên trong đội, từ quản lý đến lập trình viên, đều có một cách tiếp cận nhất quán để giải quyết vấn đề, giảm thiểu rủi ro và tối đa hóa giá trị mang lại.
+- **Đối tượng áp dụng**: Toàn bộ đội ngũ phát triển sản phẩm, áp dụng cho mọi dự án, mọi tính năng.
+
+---
+
+## 2. Giai đoạn 1: Think Big - Tư Duy Lớn
+
+**Mục tiêu**: Thiết lập một tầm nhìn rõ ràng, một "ngôi sao phương bắc" (North Star) được chia sẻ và thấu hiểu bởi tất cả mọi người. Đây là giai đoạn của "Tại sao?" và "Cái gì?".
+
+| Checklist công việc                                 | Câu hỏi cốt lõi cần trả lời                                                              | Ghi chú                                                                                                        |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **1. Xác định "Why" (Lý do)**                       | Chúng ta đang giải quyết vấn đề gì? Cho ai? Tại sao nó lại quan trọng?                   | Đây là bước quan trọng nhất. Một "Why" sai sẽ dẫn đến toàn bộ sản phẩm sai.                                    |
+| **2. Vẽ bức tranh toàn cảnh (Big Picture)**         | Hệ thống cuối cùng sẽ trông như thế nào? Luồng người dùng chính ra sao?                  | Sử dụng diagram (sơ đồ kiến trúc, sơ đồ luồng), wireframe, hoặc tài liệu mô tả để trực quan hóa.                 |
+| **3. Phân tích tác động & rủi ro**                   | Thay đổi này ảnh hưởng đến ai, hệ thống nào? Những rủi ro lớn nhất là gì?                | Lập danh sách các hệ thống phụ thuộc, các bên liên quan và các kịch bản thất bại có thể xảy ra.                 |
+| **4. Xác định các ràng buộc (Constraints)**         | Chúng ta bị giới hạn bởi những gì (ngân sách, thời gian, công nghệ, nhân sự)?           | Việc xác định rõ ràng buộc giúp định hình giải pháp thực tế, không phải là giải pháp "hoàn hảo" trên giấy.     |
+| **5. Thiết lập tiêu chí thành công (Success Criteria)** | Làm thế nào để biết chúng ta đã thành công? Những chỉ số nào sẽ được đo lường (KPIs)? | Các tiêu chí phải cụ thể, đo lường được, có thể đạt được, phù hợp và có thời hạn (SMART).                      |
+
+---
+
+## 3. Giai đoạn 2: Take Small Steps - Chia Nhỏ Có Chủ Đích
+
+**Mục tiêu**: Phá vỡ tầm nhìn lớn thành các phần việc có thể quản lý được (manageable chunks). Đây là cầu nối chiến lược giữa tầm nhìn và hành động.
+
+| Checklist công việc                               | Mô tả                                                                                                        | Ví dụ                                                                       |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| **1. Phân rã thành Milestones/Epics**             | Chia "Bức tranh toàn cảnh" thành các khối chức năng lớn, độc lập tương đối.                                   | "Quản lý người dùng", "Giỏ hàng", "Thanh toán", "Hệ thống báo cáo".         |
+| **2. Lập bản đồ lộ trình (Roadmapping)**           | Sắp xếp các Milestones/Epics theo một trình tự ưu tiên logic và có giá trị kinh doanh.                        | Xây dựng "Quản lý người dùng" trước, sau đó đến "Giỏ hàng" và "Thanh toán". |
+| **3. Định nghĩa "Hợp đồng" (API Contracts)** | Xác định cách các khối chức năng giao tiếp với nhau.                                                        | Thiết kế trước các API endpoint, request/response format giữa các dịch vụ. |
+
+---
+
+## 4. Giai đoạn 3: Do Baby Steps - Thực Hiện Từng Bước Nhỏ
+
+**Mục tiêu**: Thi hành kế hoạch với sự an toàn, tốc độ và khả năng kiểm chứng cao nhất. Mỗi bước đi là một "giao dịch" hoàn chỉnh: hoặc thành công, hoặc không ảnh hưởng gì.
+
+| Checklist công việc                               | Mô tả                                                                                                                                                             | Yêu cầu bắt buộc                                                                                                                                             |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **1. Chia nhỏ Milestone thành Tasks**              | Bẻ một Milestone/Epic thành các task nhỏ nhất có thể, mỗi task nên được hoàn thành trong 1-2 ngày.                                                                    | Task phải mang lại một giá trị nhỏ nhưng nhìn thấy được.                                                                                                    |
+| **2. Mỗi Task là một "Giao dịch"**                | Một task khi hoàn thành phải để lại hệ thống ở trạng thái ổn định và tốt hơn. Nếu thất bại, phải dễ dàng quay lui (rollback).                                          | Không commit code đang làm dở dang hoặc gây lỗi vào nhánh chính.                                                                                             |
+| **3. Tích hợp liên tục (Continuous Integration)** | Mỗi "baby step" (task) sau khi hoàn thành phải được tích hợp vào nhánh chính (main/master) ngay lập tức.                                                           | Bắt buộc có pipeline CI/CD tự động.                                                                                                                           |
+| **4. Kiểm thử ngay lập tức (Immediate Testing)** | Mỗi task phải đi kèm với các bài kiểm thử tự động (unit test, integration test) tương ứng để chứng minh nó hoạt động đúng.                                             | **No test, no code.** Tỷ lệ bao phủ code (code coverage) phải được đo lường và duy trì ở mức cao.                                                            |
+| **5. Đo lường và Xác minh (Measure & Verify)**     | Sau khi tích hợp, xác minh lại xem task có đáp ứng đúng yêu cầu hay không.                                                                                           | Sử dụng các tiêu chí đã định nghĩa ở bước "Think Big".                                                                                                        |
+| **6. Review Code**                                | Mọi dòng code mới đều phải được ít nhất một người khác trong team xem xét và phê duyệt.                                                                              | Quá trình review không chỉ để tìm lỗi, mà còn để chia sẻ kiến thức và đảm bảo sự nhất quán.                                                                 |
+
+---
+
+## 5. Vòng lặp Phản hồi (The Feedback Loop) - Liên kết các giai đoạn
+
+Đây là chất keo kết dính 3 giai đoạn trên. Tầm nhìn lớn không phải là bất biến.
+
+- **Demo định kỳ (Regular Demos)**: Bắt buộc demo sản phẩm đang xây dựng cho các bên liên quan (stakeholders) vào cuối mỗi chu kỳ ngắn (ví dụ: hàng tuần).
+- **Thu thập phản hồi (Gather Feedback)**: Chủ động lắng nghe và ghi nhận các phản hồi.
+- **Can đảm điều chỉnh (Courage to Adapt)**: Dựa trên phản hồi, sẵn sàng điều chỉnh lại "Bức tranh toàn cảnh" hoặc "Lộ trình". Việc bám sát một kế hoạch sai lầm còn tệ hơn là thay đổi kế hoạch.
+
+---
+
+## 6. Tích hợp với các phương châm khác
+
+- **Measure Twice, Cut Once**: Áp dụng triệt để trong giai đoạn **Think Big** và **Take Small Steps**.
+- **Số lượng & Thứ tự**: Là linh hồn của giai đoạn **Take Small Steps** (xác định số lượng milestones) và **Do Baby Steps** (sắp xếp thứ tự các tasks).
+- **Get It Working First**: Mỗi "Baby Step" chính là một phiên bản "working" của một phần nhỏ trong hệ thống.
+- **Always Double-Check**: Áp dụng trong toàn bộ quá trình, từ việc kiểm tra lại "Why" cho đến việc xác minh từng dòng code.
+
+---
+
+## 7. Ví dụ thực tế
+
+- **Think Big (Tầm nhìn)**: Xây dựng tính năng "Tìm kiếm sản phẩm nâng cao" cho một trang thương mại điện tử, cho phép lọc theo giá, danh mục, và thương hiệu.
+- **Take Small Steps (Các Milestones)**:
+    1.  **Milestone 1**: Xây dựng backend API cho phép tìm kiếm cơ bản theo tên.
+    2.  **Milestone 2**: Mở rộng API để hỗ trợ lọc theo giá và danh mục.
+    3.  **Milestone 3**: Tích hợp API vào giao diện người dùng (UI).
+    4.  **Milestone 4**: Thêm bộ lọc thương hiệu vào API và UI.
+- **Do Baby Steps (Các Tasks cho Milestone 2)**:
+    1.  `Task 2.1`: Sửa đổi API endpoint `GET /products` để chấp nhận tham số `minPrice` và `maxPrice`.
+    2.  `Task 2.2`: Viết unit test cho logic lọc theo giá.
+    3.  `Task 2.3`: Sửa đổi câu lệnh truy vấn CSDL để thêm điều kiện `WHERE price BETWEEN ...`.
+    4.  `Task 2.4`: Sửa đổi API endpoint để chấp nhận tham số `categoryId`.
+    5.  `Task 2.5`: Viết unit test cho logic lọc theo danh mục.
+    6.  `Task 2.6`: ... (cứ thế tiếp tục chia nhỏ).
