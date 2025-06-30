@@ -9,6 +9,17 @@
 4. **Get It Working First**: Ưu tiên có giải pháp chạy được trước khi tối ưu.
 5. **Always Double-Check**: Luôn kiểm tra kỹ lưỡng, không bao giờ giả định.
 
+**Tóm tắt sơ đồ nguyên tắc (Flow)**
+
+## 1. Think Big, Do Baby Steps (Tư duy lớn, thực hiện từng bước nhỏ)
+
+Phương châm này khuyến khích việc có một tầm nhìn hoặc mục tiêu lớn, nhưng khi thực thi thì phải chia nhỏ thành các bước đi cực kỳ nhỏ, độc lập và có thể kiểm chứng được.
+
+- **Tư duy lớn (Think Big)**: Hiểu rõ mục tiêu cuối cùng, bối cảnh và bức tranh toàn cảnh của nhiệm vụ.
+- **Bước đi nhỏ (Baby Steps)**: Thực hiện các thay đổi nhỏ nhất có thể, giúp dễ dàng kiểm tra, xác minh và quay lại nếu có lỗi.
+
+> Tham khảo quy trình chi tiết tại: [rule-build-small-think-big-do-baby-steps.mdc](./rule-build-small-think-big-do-baby-steps.mdc)
+
 ---
 
 ## 2. Measure Twice, Cut Once (Đo hai lần, cắt một lần)
@@ -34,7 +45,7 @@ Phương châm này là nền tảng cho việc lập kế hoạch và báo cáo
 
 ## 3.1. Số lượng (Quantity): Đảm bảo Toàn vẹn Dữ liệu
 
-> _"Mọi tác vụ, đặc biệt là các thao tác lập hoặc xử lý dữ liệu, phải được kiểm tra kỹ về số lượng đầu vào và đầu ra để đảm bảo tính toàn vẹn và không bỏ sót."_
+> _"Mọi tác vụ, đặc biệt là các thao tác lặp hoặc xử lý dữ liệu, phải được kiểm tra kỹ về số lượng đầu vào và đầu ra để đảm bảo tính toàn vẹn và không bỏ sót."_
 
 - **Luôn đếm**: Trước và sau khi xử lý một tập dữ liệu, hãy xác nhận số lượng. Ví dụ: đọc 100 dòng từ file, xử lý xong cũng phải đảm bảo có 100 kết quả tương ứng.
 - **Kiểm tra tổng (Checksum)**: Đối với các tác vụ quan trọng, có thể sử dụng các kỹ thuật kiểm tra tổng để đảm bảo dữ liệu không bị thay đổi.
@@ -70,6 +81,40 @@ Phương châm này tập trung vào việc **hoàn thành (Done)** trước khi
 
 Đây là nguyên tắc tối thượng về sự cẩn thận và xác minh, với tư duy cốt lõi: **"Không bao giờ giả định, luôn luôn xác minh" (Never Assume, Always Verify)**. Bất kỳ khi nào có một chút nghi ngờ, phải dừng lại và kiểm tra bằng mọi công cụ có thể.
 
+
+**Quy trình BẮT BUỘC trước khi code:**
+
+1.  **Tiếp nhận & Diễn giải (Receive & Rephrase):**
+    *   Khi nhận được yêu cầu, người thực thi phải diễn giải lại yêu cầu bằng ngôn từ của mình để xác nhận đã hiểu đúng.
+    *   *Ví dụ:* "Như tôi hiểu, bạn muốn tạo một chức năng X để giải quyết vấn đề Y. Có đúng không?"
+
+2.  **Phân rã Yêu cầu & Xác định Thành phần (Deconstruct & Identify):**
+    *   Người thực thi phải bóc tách yêu cầu thành các thành phần chính: **Thực thể (Entities)**, **Hành động (Actions)**, và **Kết quả mong đợi (Outcomes)**.
+    *   *Ví dụ:* "Từ yêu cầu của bạn, tôi xác định:
+        *   **Thực thể:** `User`, `Order`.
+        *   **Hành động:** `Cancel` một đơn hàng.
+        *   **Kết quả:** Trạng thái đơn hàng chuyển thành 'Cancelled', và gửi email thông báo cho người dùng."
+
+3.  **Xây dựng Tiêu chí Chấp nhận (Define Acceptance Criteria - AC):**
+    *   Người thực thi **BẮT BUỘC** phải đề xuất một danh sách các Tiêu chí Chấp nhận dưới dạng checklist để bạn xác nhận. Đây là "hợp đồng" của chúng ta về thế nào là "hoàn thành".
+    *   *Ví dụ:* "Để chức năng này được coi là hoàn thành, các điều kiện sau cần đúng. Vui lòng xác nhận:
+        *   `[ ]` Chỉ người dùng sở hữu đơn hàng mới có thể hủy.
+        *   `[ ]` Không thể hủy đơn hàng đã ở trạng thái 'Shipped'.
+        *   `[ ]` Khi hủy thành công, một email xác nhận được gửi đi."
+
+4.  **Nêu rõ các Giả định (Surface Assumptions):**
+    *   Người thực thi phải liệt kê tất cả các giả định kỹ thuật hoặc logic nghiệp vụ mà nó đang dựa vào để tránh các quyết định sai lầm.
+    *   *Ví dụ:* "Tôi đang đưa ra các giả định sau, xin hãy điều chỉnh nếu cần:
+        *   Tôi giả định sẽ tái sử dụng `EmailService` hiện có.
+        *   Tôi giả định việc kiểm tra quyền hạn sẽ được thực hiện trong lớp `OrderService`."
+
+5.  **Đề xuất Kế hoạch & Chờ Phê duyệt (Propose Plan & Await Approval):**
+    *   Sau khi các bước trên được bạn xác nhận, người thực thi sẽ trình bày một kế hoạch thực thi ở cấp độ cao (ví dụ: các file/lớp sẽ được tạo/sửa).
+    *   **Người thực thi sẽ không bắt đầu viết code cho đến khi kế hoạch này được bạn phê duyệt.**
+    *   *Ví dụ:* "Kế hoạch của tôi:
+        1.  Sửa đổi `OrderController` để thêm endpoint `DELETE /orders/{id}`.
+        2.  Thêm logic xử lý hủy đơn hàng vào `OrderService`.
+        Bạn có đồng ý với kế hoạch này không?"
 
 ### 5.1. Với Hệ thống File (Filesystem)
 #### Trước khi **TẠO (Create)**:
