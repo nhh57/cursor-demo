@@ -1,0 +1,50 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+- **Always Double-Check**: Được thể chế hóa qua `Pull Request Checklist` và quy trình Code Review.
+
+---
+
+### **Phần bổ sung: Giao thức Tương tác & Làm rõ với AI (AI Interaction & Clarification Protocol)**
+
+> **Tư duy cốt lõi:** AI không được phép đưa ra giả định ngầm. Mọi sự mơ hồ phải được làm rõ *trước khi* viết dòng code đầu tiên. Quy trình này là sự thể chế hóa của nguyên tắc "Measure Twice, Cut Once" trong bối cảnh làm việc giữa người dùng và AI.
+
+**Quy trình BẮT BUỘC trước khi code:**
+
+1.  **Tiếp nhận & Diễn giải (Receive & Rephrase):**
+    *   Khi nhận được yêu cầu, AI phải diễn giải lại yêu cầu bằng ngôn từ của mình để xác nhận đã hiểu đúng.
+    *   *Ví dụ:* "Như tôi hiểu, bạn muốn tạo một chức năng X để giải quyết vấn đề Y. Có đúng không?"
+
+2.  **Phân rã Yêu cầu & Xác định Thành phần (Deconstruct & Identify):**
+    *   AI phải bóc tách yêu cầu thành các thành phần chính: **Thực thể (Entities)**, **Hành động (Actions)**, và **Kết quả mong đợi (Outcomes)**.
+    *   *Ví dụ:* "Từ yêu cầu của bạn, tôi xác định:
+        *   **Thực thể:** `User`, `Order`.
+        *   **Hành động:** `Cancel` một đơn hàng.
+        *   **Kết quả:** Trạng thái đơn hàng chuyển thành 'Cancelled', và gửi email thông báo cho người dùng."
+
+3.  **Xây dựng Tiêu chí Chấp nhận (Define Acceptance Criteria - AC):**
+    *   AI **BẮT BUỘC** phải đề xuất một danh sách các Tiêu chí Chấp nhận dưới dạng checklist để bạn xác nhận. Đây là "hợp đồng" của chúng ta về thế nào là "hoàn thành".
+    *   *Ví dụ:* "Để chức năng này được coi là hoàn thành, các điều kiện sau cần đúng. Vui lòng xác nhận:
+        *   `[ ]` Chỉ người dùng sở hữu đơn hàng mới có thể hủy.
+        *   `[ ]` Không thể hủy đơn hàng đã ở trạng thái 'Shipped'.
+        *   `[ ]` Khi hủy thành công, một email xác nhận được gửi đi."
+
+4.  **Nêu rõ các Giả định (Surface Assumptions):**
+    *   AI phải liệt kê tất cả các giả định kỹ thuật hoặc logic nghiệp vụ mà nó đang dựa vào để tránh các quyết định sai lầm.
+    *   *Ví dụ:* "Tôi đang đưa ra các giả định sau, xin hãy điều chỉnh nếu cần:
+        *   Tôi giả định sẽ tái sử dụng `EmailService` hiện có.
+        *   Tôi giả định việc kiểm tra quyền hạn sẽ được thực hiện trong lớp `OrderService`."
+
+5.  **Đề xuất Kế hoạch & Chờ Phê duyệt (Propose Plan & Await Approval):**
+    *   Sau khi các bước trên được bạn xác nhận, AI sẽ trình bày một kế hoạch thực thi ở cấp độ cao (ví dụ: các file/lớp sẽ được tạo/sửa).
+    *   **AI sẽ không bắt đầu viết code cho đến khi kế hoạch này được bạn phê duyệt.**
+    *   *Ví dụ:* "Kế hoạch của tôi:
+        1.  Sửa đổi `OrderController` để thêm endpoint `DELETE /orders/{id}`.
+        2.  Thêm logic xử lý hủy đơn hàng vào `OrderService`.
+        Bạn có đồng ý với kế hoạch này không?"
+
+---
+
+## 7. Tích hợp với các Nguyên tắc Gốc
